@@ -38,7 +38,7 @@ export default function Hero() {
           transition={{ delay: 0.1 }}
           className="font-mono text-xs tracking-widest uppercase text-muted-foreground mb-6"
         >
-          <span className="text-primary">//</span> software engineer &amp; developer
+          <span className="text-primary">//</span> cs student &amp; ai engineer
         </motion.p>
 
         <motion.h1

@@ -1,8 +1,8 @@
 export const personalInfo = {
   name: "Khalil Yahyaoui",
-  role: "Software Engineer & VibeCoder",
+  role: "CS Student & AI Engineer in Progress",
   tagline: "Building digital experiences that matter",
-  bio: "I'm a Computer Science student with a passion for building clean, performant web applications and solving real-world problems through code. I work across the full stack — from designing intuitive user interfaces to architecting backend systems and databases.",
+  bio: "I'm a Computer Science student at the Faculty of Sciences of Sfax, Tunisia, with a growing passion for AI engineering and intelligent systems. I build full-stack web applications and explore the design of AI agents powered by large language models. I'm constantly working on personal projects that bridge software engineering and machine intelligence, and I'm actively looking for internships, research opportunities, and collaborations both locally and internationally.",
   location: "Tunisia",
   email: "khalil@example.com",
 }
@@ -95,7 +95,7 @@ export const experience = [
     role: "Computer Science Student",
     company: "University",
     period: "2023 - Present",
-    location: "Tunisia",
+  location: "Sfax, Tunisia",
     url: "#",
     description:
       "Pursuing a degree in Computer Science. Focus on software engineering, web development, and database systems.",

@@ -4,16 +4,16 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Khalil Yahyaoui | Software Engineer",
+    default: "Khalil Yahyaoui | CS Student & AI Engineer",
     template: "%s | Khalil Yahyaoui",
   },
   description:
-    "Computer Science student and developer building modern web applications. Passionate about React, Next.js, and clean code.",
+    "Computer Science student at Faculty of Sciences of Sfax. Building full-stack apps and exploring AI engineering with LLMs.",
   keywords: ["developer", "portfolio", "react", "next.js", "typescript", "python"],
   authors: [{ name: "Khalil Yahyaoui" }],
   openGraph: {
-    title: "Khalil Yahyaoui | Software Engineer",
-    description: "Computer Science student and developer building modern web applications.",
+    title: "Khalil Yahyaoui | CS Student & AI Engineer",
+    description: "Computer Science student at Faculty of Sciences of Sfax. Building full-stack apps and exploring AI engineering with LLMs.",
     url: "https://portofilo.vercel.app",
     siteName: "Khalil Yahyaoui Portfolio",
     locale: "en_US",
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Khalil Yahyaoui | Software Engineer",
-    description: "Computer Science student and developer building modern web applications.",
+    title: "Khalil Yahyaoui | CS Student & AI Engineer",
+    description: "Computer Science student at Faculty of Sciences of Sfax. Building full-stack apps and exploring AI engineering with LLMs.",
   },
   robots: {
     index: true,
