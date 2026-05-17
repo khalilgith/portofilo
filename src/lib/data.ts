@@ -59,10 +59,11 @@ export const projects = [
 ]
 
 export const socialLinks = {
-  github: "https://github.com/johndoe",
-  linkedin: "https://linkedin.com/in/johndoe",
-  twitter: "https://twitter.com/johndoe",
-  email: "john@example.com",
+  github: "https://github.com/khalilgith",
+  instagram: "https://instagram.com/khaleel__yh",
+  linkedin: "",
+  twitter: "",
+  email: "",
 }
 
 export const contactConfig = {
