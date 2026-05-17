@@ -1,4 +1,3 @@
-import CursorGlow from "@/components/CursorGlow"
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 import Expertise from "@/components/Expertise"
@@ -12,7 +11,6 @@ import Footer from "@/components/Footer"
 export default function Home() {
   return (
     <>
-      <CursorGlow />
       <Navbar />
       <main>
         <Hero />

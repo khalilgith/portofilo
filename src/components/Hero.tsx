@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { ArrowDown, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { personalInfo, socialLinks } from "@/lib/data"
+import HeroBackground from "@/components/HeroBackground"
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -24,12 +25,13 @@ function InstagramIcon({ className }: { className?: string }) {
 export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-16">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
+      <HeroBackground />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        style={{ position: "relative", zIndex: 1 }}
         className="text-center max-w-2xl"
       >
         <motion.p
