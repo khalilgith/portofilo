@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Mail } from "lucide-react"
-import { personalInfo, socialLinks, testimonials } from "@/lib/data"
+import { personalInfo, socialLinks } from "@/lib/data"
 
 export default function Contact() {
   return (
@@ -21,7 +21,7 @@ export default function Contact() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Get In Touch</h2>
         </motion.div>
 
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="max-w-xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -66,31 +66,6 @@ export default function Contact() {
                 username="@khaleel__yh"
               />
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-6"
-          >
-            {testimonials.map((t, index) => (
-              <div
-                key={index}
-                className="rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/50"
-              >
-                <p className="mb-4 text-sm text-muted-foreground leading-relaxed italic">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div>
-                  <p className="text-sm font-semibold">{t.author}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.role}, {t.company}
-                  </p>
-                </div>
-              </div>
-            ))}
           </motion.div>
         </div>
       </div>
