@@ -70,10 +70,20 @@ export default function Projects() {
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:border-primary/50"
               >
-                <div className="aspect-video w-full bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
-                  <span className="text-5xl font-bold text-muted-foreground/20">
-                    {project.title.charAt(0)}
-                  </span>
+                <div className="aspect-video w-full overflow-hidden bg-muted">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5">
+                      <span className="text-5xl font-bold text-muted-foreground/20">
+                        {project.title.charAt(0)}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-5">
