@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WeatherNow · Demo</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: #0c0c0c;
-      color: #f5f5f5;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -20,17 +20,17 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
-      border-bottom: 1px solid #262626;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     nav a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: #a3a3a3;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
       text-decoration: none;
-      letter-spacing: 0.05em;
+      transition: color 0.2s;
     }
-    nav a span { color: #f59e0b; }
-    nav h1 { font-size: 1.25rem; font-weight: 700; }
+    nav a:hover { color: #fff; }
     .container {
       flex: 1;
       max-width: 640px;
@@ -45,77 +45,88 @@
     }
     .search-row input {
       flex: 1;
-      background: #1a1a1a;
-      border: 1px solid #262626;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      color: #f5f5f5;
-      font-family: 'DM Sans', sans-serif;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .search-row input:focus { border-color: #f59e0b; }
-    .search-row button {
-      background: #f59e0b;
-      color: #0c0c0c;
-      border: none;
-      border-radius: 8px;
-      padding: 0.75rem 1.25rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .search-row button:hover { opacity: 0.85; }
-    .current {
-      background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
-      border: 1px solid #262626;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 16px;
-      padding: 2rem;
+      padding: 0.8rem 1.2rem;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      outline: none;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+    .search-row input:focus { border-color: rgba(100, 200, 255, 0.4); background: rgba(255,255,255,0.08); }
+    .search-row input::placeholder { color: rgba(255,255,255,0.3); }
+    .search-row button {
+      background: rgba(100, 200, 255, 0.15);
+      border: 1px solid rgba(100, 200, 255, 0.2);
+      color: #64c8ff;
+      border-radius: 16px;
+      padding: 0.8rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Outfit', sans-serif;
+    }
+    .search-row button:hover { background: rgba(100, 200, 255, 0.25); }
+    .current {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
       text-align: center;
       margin-bottom: 1.5rem;
-      transition: border-color 0.3s;
+      position: relative;
+      overflow: hidden;
     }
-    .current:hover { border-color: #f59e0b33; }
-    .current .city { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .current .temp { font-size: 4rem; font-weight: 700; color: #f59e0b; line-height: 1; margin: 0.5rem 0; }
-    .current .desc { color: #a3a3a3; font-size: 1rem; text-transform: capitalize; margin-bottom: 0.75rem; }
+    .current::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(100, 200, 255, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .current .city { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.6); margin-bottom: 0.25rem; }
+    .current .temp { font-size: 4.5rem; font-weight: 300; line-height: 1; margin: 0.25rem 0; letter-spacing: -2px; }
+    .current .desc { color: rgba(255,255,255,0.6); font-size: 1rem; margin-bottom: 1rem; }
     .current .details {
-      display: flex; justify-content: center; gap: 2rem; color: #a3a3a3; font-size: 0.85rem;
+      display: flex; justify-content: center; gap: 2.5rem; color: rgba(255,255,255,0.5); font-size: 0.85rem;
     }
-    .current .details span { display: flex; align-items: center; gap: 0.35rem; }
-    .forecast { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; }
+    .forecast-title { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .forecast { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
     .forecast-card {
-      background: #1a1a1a;
-      border: 1px solid #262626;
-      border-radius: 10px;
-      padding: 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 1rem 0.5rem;
       text-align: center;
-      transition: border-color 0.2s;
+      transition: all 0.3s;
     }
-    .forecast-card:hover { border-color: #f59e0b33; }
-    .forecast-card .day { font-size: 0.75rem; color: #a3a3a3; margin-bottom: 0.25rem; }
-    .forecast-card .icon { font-size: 1.5rem; margin-bottom: 0.25rem; }
-    .forecast-card .high { font-weight: 600; font-size: 0.9rem; }
-    .forecast-card .low { font-size: 0.75rem; color: #a3a3a3; }
+    .forecast-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(100, 200, 255, 0.15); }
+    .forecast-card .day { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 0.35rem; font-weight: 500; }
+    .forecast-card .icon { font-size: 1.5rem; margin-bottom: 0.35rem; }
+    .forecast-card .high { font-weight: 500; font-size: 0.9rem; }
+    .forecast-card .low { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+    .error { text-align: center; margin-bottom: 1rem; font-size: 0.85rem; }
     footer {
       text-align: center;
-      padding: 1.5rem;
-      font-family: 'JetBrains Mono', monospace;
+      padding: 1.25rem;
       font-size: 0.7rem;
-      color: #a3a3a3;
-      border-top: 1px solid #262626;
+      color: rgba(255,255,255,0.25);
+      border-top: 1px solid rgba(255,255,255,0.04);
     }
-    .error { color: #ef4444; text-align: center; margin-bottom: 1rem; font-size: 0.85rem; }
   </style>
 </head>
 <body>
   <nav>
-    <h1>🌤️ WeatherNow</h1>
-    <a href="/"><span>//</span> back to portfolio</a>
+    <span style="font-weight: 500; letter-spacing: 0.02em;">🌤️ WeatherNow</span>
+    <a href="/">← back to portfolio</a>
   </nav>
   <div class="container">
     <div class="search-row">
-      <input type="text" id="cityInput" placeholder="Enter a city (e.g. London, Tokyo, Sfax)" value="Sfax" autofocus>
+      <input type="text" id="cityInput" placeholder="Search city..." value="Sfax" autofocus>
       <button id="searchBtn">Search</button>
     </div>
     <div id="error" class="error"></div>
@@ -128,17 +139,17 @@
         <span>💨 <span id="wind">--</span> km/h</span>
       </div>
     </div>
+    <div class="forecast-title">5-day forecast</div>
     <div class="forecast" id="forecast"></div>
   </div>
-  <footer>demo · khalil yahyaoui</footer>
+  <footer>demo project · khalil yahyaoui</footer>
   <script>
-    const API_KEY = 'demo';
     const cache = {};
     async function fetchWeather(city) {
       if (cache[city]) return cache[city];
-      const coords = { 'london': [51.5, -0.12], 'paris': [48.85, 2.35], 'tokyo': [35.68, 139.69], 'new york': [40.71, -74.01], 'dubai': [25.20, 55.27], 'sfax': [34.74, 10.76], 'tunis': [36.80, 10.18], 'berlin': [52.52, 13.41], 'rome': [41.90, 12.50], 'madrid': [40.42, -3.70], 'moscow': [55.76, 37.62], 'beijing': [39.90, 116.40], 'sydney': [-33.87, 151.21], 'cairo': [30.04, 31.24], 'casablanca': [33.58, -7.58], 'algiers': [36.75, 3.04], 'lagos': [6.45, 3.39], 'nairobi': [-1.29, 36.82], 'cape town': [-33.92, 18.42], 'mumbai': [19.08, 72.88], 'singapore': [1.35, 103.82], 'seoul': [37.57, 126.98], 'bangkok': [13.75, 100.50], 'istanbul': [41.01, 28.98], 'amsterdam': [52.37, 4.89] };
+      const coords = { 'london': [51.5, -0.12], 'paris': [48.85, 2.35], 'tokyo': [35.68, 139.69], 'new york': [40.71, -74.01], 'dubai': [25.20, 55.27], 'sfax': [34.74, 10.76], 'tunis': [36.80, 10.18], 'berlin': [52.52, 13.41], 'rome': [41.90, 12.50], 'madrid': [40.42, -3.70], 'moscow': [55.76, 37.62], 'beijing': [39.90, 116.40], 'sydney': [-33.87, 151.21], 'cairo': [30.04, 31.24], 'casablanca': [33.58, -7.58], 'algiers': [36.75, 3.04], 'lagos': [6.45, 3.39], 'nairobi': [-1.29, 36.82], 'cape town': [-33.92, 18.42], 'mumbai': [19.08, 72.88], 'singapore': [1.35, 103.82], 'seoul': [37.57, 126.98], 'bangkok': [13.75, 100.50], 'istanbul': [41.01, 28.98], 'amsterdam': [52.37, 4.89], 'los angeles': [34.05, -118.24], 'chicago': [41.87, -87.62], 'toronto': [43.65, -79.38] };
       const key = city.toLowerCase().trim();
-      if (!coords[key]) throw new Error('City not found. Try: London, Tokyo, Paris, Sfax, Dubai...');
+      if (!coords[key]) throw new Error('City not found. Try London, Tokyo, Paris, Sfax...');
       const [lat, lon] = coords[key];
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
       const res = await fetch(url);
@@ -174,8 +185,7 @@
         document.getElementById('desc').textContent = `${w.icon} ${w.desc}`;
         document.getElementById('humidity').textContent = w.humidity;
         document.getElementById('wind').textContent = w.wind;
-        const forecastEl = document.getElementById('forecast');
-        forecastEl.innerHTML = w.forecast.map(f => `
+        document.getElementById('forecast').innerHTML = w.forecast.map(f => `
           <div class="forecast-card">
             <div class="day">${f.day}</div>
             <div class="icon">${f.icon}</div>
