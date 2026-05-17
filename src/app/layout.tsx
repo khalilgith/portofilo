@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Khalil Yahyaoui | CS Student & AI Engineer",
     description: "Computer Science student at Faculty of Sciences of Sfax. Building full-stack apps and exploring AI engineering with LLMs.",
-    url: "https://portofilo.vercel.app",
+    url: "https://khalil-yahyaoui.vercel.app",
     siteName: "Khalil Yahyaoui Portfolio",
     locale: "en_US",
     type: "website",
