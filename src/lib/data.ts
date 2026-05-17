@@ -1,11 +1,29 @@
 export const personalInfo = {
   name: "Khalil Yahyaoui",
-  role: "VibeCoder",
+  role: "Software Engineer & VibeCoder",
   tagline: "Building digital experiences that matter",
-  bio: "I'm a Computer Science student with a passion for building clean, performant web applications and solving real-world problems through code. I work across the full stack — from designing intuitive user interfaces to architecting backend systems and databases. I'm constantly exploring new technologies, contributing to side projects, and turning ideas into shipped products. Currently open to internships, collaborations, and entry-level opportunities where I can grow and make an impact.",
-  location: "San Francisco, CA",
-  resumeUrl: "/resume.pdf",
+  bio: "I'm a Computer Science student with a passion for building clean, performant web applications and solving real-world problems through code. I work across the full stack — from designing intuitive user interfaces to architecting backend systems and databases.",
+  location: "Tunisia",
+  email: "khalil@example.com",
 }
+
+export const expertise = [
+  {
+    title: "Software Development",
+    description: "Experienced in both functional and OOP: Python, JavaScript, TypeScript, C.",
+    icon: "code",
+  },
+  {
+    title: "Frontend Dev React & Next.js",
+    description: "Passionate about UI/UX. Skilled in React, Next.js, HTML, CSS, and building responsive web applications.",
+    icon: "layout",
+  },
+  {
+    title: "Backend & Databases",
+    description: "Experienced in building REST APIs, working with SQL databases, and designing scalable backend systems.",
+    icon: "server",
+  },
+]
 
 export const skills = [
   { name: "Python", level: 90 },
@@ -26,36 +44,85 @@ export const skills = [
 export const projects = [
   {
     title: "ShopFlow",
-    description: "A full-featured e-commerce platform with real-time inventory management, payment processing via Stripe, and an admin dashboard.",
-    tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-    image: "/projects/shopflow.jpg",
-    link: "https://shopflow.example.com",
-    github: "https://github.com/johndoe/shopflow",
+    description: "A full-featured e-commerce platform with real-time inventory management and Stripe payments.",
+    tech: ["React", "Node.js", "Stripe"],
+    image: "",
+    link: "#",
+    github: "#",
+    category: "web-dev",
   },
   {
     title: "TaskForge",
-    description: "Collaborative project management tool with Kanban boards, real-time updates, team chat, and GitHub integration.",
-    tech: ["React", "Node.js", "Socket.io", "MongoDB"],
-    image: "/projects/taskforge.jpg",
-    link: "https://taskforge.example.com",
-    github: "https://github.com/johndoe/taskforge",
+    description: "Collaborative project management tool with Kanban boards and real-time updates.",
+    tech: ["React", "Socket.io", "MongoDB"],
+    image: "",
+    link: "#",
+    github: "#",
+    category: "web-dev",
   },
   {
     title: "WeatherVue",
-    description: "Beautiful weather dashboard with 7-day forecasts, animated weather maps, and location-based alerts.",
-    tech: ["Vue.js", "D3.js", "OpenWeather API", "Tailwind"],
-    image: "/projects/weathervue.jpg",
-    link: "https://weathervue.example.com",
-    github: "https://github.com/johndoe/weathervue",
+    description: "Beautiful weather dashboard with forecasts and animated weather maps.",
+    tech: ["Vue.js", "D3.js", "API"],
+    image: "",
+    link: "#",
+    github: "#",
+    category: "web-dev",
   },
   {
     title: "DevMetrics",
-    description: "Analytics platform for developers to track repository stats, code quality, and team productivity across GitHub orgs.",
-    tech: ["Next.js", "GraphQL", "Python", "Redis"],
-    image: "/projects/devmetrics.jpg",
-    link: "https://devmetrics.example.com",
-    github: "https://github.com/johndoe/devmetrics",
+    description: "Analytics platform tracking repo stats and code quality across GitHub orgs.",
+    tech: ["Next.js", "GraphQL", "Python"],
+    image: "",
+    link: "#",
+    github: "#",
+    category: "data-viz",
   },
+]
+
+export const experience = [
+  {
+    role: "Freelance Web Developer",
+    company: "Upwork Inc.",
+    period: "2024 - Present",
+    location: "Remote",
+    url: "#",
+    description:
+      "Top-rated developer specializing in frontend technologies. Building modern web applications for clients worldwide.",
+    technologies: ["JavaScript", "React", "HTML", "CSS", "Python"],
+  },
+  {
+    role: "Computer Science Student",
+    company: "University",
+    period: "2023 - Present",
+    location: "Tunisia",
+    url: "#",
+    description:
+      "Pursuing a degree in Computer Science. Focus on software engineering, web development, and database systems.",
+    technologies: ["Python", "C", "SQL", "React", "TypeScript"],
+  },
+]
+
+export const testimonials = [
+  {
+    quote:
+      "Khalil is one of the most dedicated developers I've worked with. His attention to detail and ability to solve complex problems is remarkable.",
+    author: "Client Name",
+    role: "Founder",
+    company: "Company Name",
+  },
+  {
+    quote:
+      "Amazing work ethic and technical skills. Always delivers beyond expectations.",
+    author: "Another Client",
+    role: "CEO",
+    company: "Another Company",
+  },
+]
+
+export const featuredIn = [
+  { name: "GitHub", url: "https://github.com/khalilgith" },
+  { name: "Instagram", url: "https://instagram.com/khaleel__yh" },
 ]
 
 export const socialLinks = {
@@ -63,19 +130,13 @@ export const socialLinks = {
   instagram: "https://instagram.com/khaleel__yh",
   linkedin: "",
   twitter: "",
-  email: "",
-}
-
-export const contactConfig = {
-  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
-  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "",
+  email: "khalil@example.com",
 }
 
 export const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "home", href: "#hero" },
+  { label: "expertise", href: "#expertise" },
+  { label: "work", href: "#projects" },
+  { label: "experience", href: "#experience" },
+  { label: "contact", href: "#contact" },
 ]

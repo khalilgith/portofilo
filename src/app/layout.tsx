@@ -1,38 +1,19 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
 import Providers from "./providers"
 import "./globals.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
-
 export const metadata: Metadata = {
   title: {
-    default: "Khalil Yahyaoui | VibeCoder",
+    default: "Khalil Yahyaoui | Software Engineer",
     template: "%s | Khalil Yahyaoui",
   },
   description:
-    "Computer Science student and VibeCoder building modern web applications with React, Next.js, and TypeScript. View my portfolio and get in touch.",
-  keywords: [
-    "developer",
-    "portfolio",
-    "full-stack",
-    "react",
-    "next.js",
-    "typescript",
-  ],
+    "Computer Science student and developer building modern web applications. Passionate about React, Next.js, and clean code.",
+  keywords: ["developer", "portfolio", "react", "next.js", "typescript", "python"],
   authors: [{ name: "Khalil Yahyaoui" }],
   openGraph: {
-    title: "Khalil Yahyaoui | VibeCoder",
-    description:
-      "Computer Science student and VibeCoder building modern web applications with React, Next.js, and TypeScript.",
+    title: "Khalil Yahyaoui | Software Engineer",
+    description: "Computer Science student and developer building modern web applications.",
     url: "https://portofilo.vercel.app",
     siteName: "Khalil Yahyaoui Portfolio",
     locale: "en_US",
@@ -40,9 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Khalil Yahyaoui | VibeCoder",
-    description:
-      "Computer Science student and VibeCoder building modern web applications with React, Next.js, and TypeScript.",
+    title: "Khalil Yahyaoui | Software Engineer",
+    description: "Computer Science student and developer building modern web applications.",
   },
   robots: {
     index: true,
@@ -56,12 +36,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen bg-background text-foreground antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>

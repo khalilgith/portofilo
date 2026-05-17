@@ -5,7 +5,6 @@ import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import ThemeToggle from "@/components/ThemeToggle"
-import NavLink from "@/components/NavLink"
 import { navLinks } from "@/lib/data"
 
 export default function Navbar() {
@@ -14,7 +13,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("hero")
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -35,41 +34,36 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full border-b transition-all duration-300 ${
-        isScrolled
-          ? "border-border/50 bg-background/80 backdrop-blur-lg"
-          : "border-transparent bg-transparent"
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled ? "bg-background/90 backdrop-blur-lg border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
-        <a
-          href="#hero"
-          className="text-lg font-bold tracking-tight transition-colors hover:text-primary"
-        >
-          Portfolio
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+        <a href="#hero" className="font-mono text-sm font-medium tracking-tight text-primary">
+          khalil.dev
         </a>
 
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
-            <NavLink
+            <a
               key={link.href}
               href={link.href}
-              label={link.label}
-              isActive={activeSection === link.href.slice(1)}
-            />
+              className={`font-mono text-xs tracking-wider uppercase transition-colors duration-200 ${
+                activeSection === link.href.slice(1)
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <span className="text-primary">//</span> {link.label}
+            </a>
           ))}
           <ThemeToggle />
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          <Button variant="ghost" size="icon" onClick={() => setIsMobileOpen(!isMobileOpen)} aria-label="Toggle menu">
+            {isMobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
           </Button>
         </div>
       </div>
@@ -82,15 +76,18 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="overflow-hidden border-t border-border bg-background md:hidden"
           >
-            <div className="flex flex-col gap-2 px-4 py-4">
+            <div className="flex flex-col gap-3 px-6 py-4">
               {navLinks.map((link) => (
-                <NavLink
+                <a
                   key={link.href}
                   href={link.href}
-                  label={link.label}
-                  isActive={activeSection === link.href.slice(1)}
                   onClick={() => setIsMobileOpen(false)}
-                />
+                  className={`font-mono text-xs tracking-wider uppercase ${
+                    activeSection === link.href.slice(1) ? "text-foreground" : "text-muted-foreground"
+                  }`}
+                >
+                  <span className="text-primary">//</span> {link.label}
+                </a>
               ))}
             </div>
           </motion.nav>
