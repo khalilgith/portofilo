@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "John Doe | Full-Stack Developer",
-    template: "%s | John Doe",
+    default: "Khalil Yahyaoui | VibeCoder",
+    template: "%s | Khalil Yahyaoui",
   },
   description:
-    "Full-stack developer building modern web applications with React, Next.js, and TypeScript. View my portfolio and get in touch.",
+    "Computer Science student and VibeCoder building modern web applications with React, Next.js, and TypeScript. View my portfolio and get in touch.",
   keywords: [
     "developer",
     "portfolio",
@@ -28,21 +28,21 @@ export const metadata: Metadata = {
     "next.js",
     "typescript",
   ],
-  authors: [{ name: "John Doe" }],
+  authors: [{ name: "Khalil Yahyaoui" }],
   openGraph: {
-    title: "John Doe | Full-Stack Developer",
+    title: "Khalil Yahyaoui | VibeCoder",
     description:
-      "Full-stack developer building modern web applications with React, Next.js, and TypeScript.",
-    url: "https://your-domain.vercel.app",
-    siteName: "John Doe Portfolio",
+      "Computer Science student and VibeCoder building modern web applications with React, Next.js, and TypeScript.",
+    url: "https://portofilo.vercel.app",
+    siteName: "Khalil Yahyaoui Portfolio",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "John Doe | Full-Stack Developer",
+    title: "Khalil Yahyaoui | VibeCoder",
     description:
-      "Full-stack developer building modern web applications with React, Next.js, and TypeScript.",
+      "Computer Science student and VibeCoder building modern web applications with React, Next.js, and TypeScript.",
   },
   robots: {
     index: true,

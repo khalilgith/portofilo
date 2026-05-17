@@ -1,21 +1,26 @@
 export const personalInfo = {
-  name: "John Doe",
-  role: "Full-Stack Developer",
+  name: "Khalil Yahyaoui",
+  role: "VibeCoder",
   tagline: "Building digital experiences that matter",
-  bio: "I'm a full-stack developer with 5+ years of experience building modern web applications. I love turning complex problems into simple, beautiful, and intuitive solutions.",
+  bio: "I'm a Computer Science student with a passion for building clean, performant web applications and solving real-world problems through code. I work across the full stack — from designing intuitive user interfaces to architecting backend systems and databases. I'm constantly exploring new technologies, contributing to side projects, and turning ideas into shipped products. Currently open to internships, collaborations, and entry-level opportunities where I can grow and make an impact.",
   location: "San Francisco, CA",
   resumeUrl: "/resume.pdf",
 }
 
 export const skills = [
-  { name: "React / Next.js", level: 95 },
-  { name: "TypeScript", level: 90 },
-  { name: "Node.js", level: 85 },
-  { name: "Python", level: 80 },
-  { name: "PostgreSQL", level: 75 },
-  { name: "Docker", level: 70 },
-  { name: "Tailwind CSS", level: 92 },
-  { name: "GraphQL", level: 78 },
+  { name: "Python", level: 90 },
+  { name: "HTML / CSS", level: 95 },
+  { name: "SQL", level: 95 },
+  { name: "React", level: 80 },
+  { name: "JavaScript", level: 78 },
+  { name: "C", level: 74 },
+  { name: "Node.js", level: 65 },
+  { name: "TypeScript", level: 60 },
+  { name: "REST APIs", level: 75 },
+  { name: "Git / GitHub", level: 85 },
+  { name: "Docker", level: 45 },
+  { name: "Bash / Linux", level: 50 },
+  { name: "PowerShell", level: 40 },
 ]
 
 export const projects = [

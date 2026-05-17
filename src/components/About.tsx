@@ -39,9 +39,9 @@ export default function About() {
 
           <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
             {[
-              { label: "Experience", value: "5+ Years" },
-              { label: "Projects", value: "20+" },
-              { label: "Clients", value: "15+" },
+              { label: "Projects", value: "10+" },
+              { label: "Technologies", value: "15+" },
+              { label: "Open Source", value: "5+" },
             ].map((stat) => (
               <div
                 key={stat.label}
