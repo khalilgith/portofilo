@@ -4,7 +4,7 @@ export const personalInfo = {
   tagline: "Building digital experiences that matter",
   bio: "I'm a Computer Science student at the Faculty of Sciences of Sfax, Tunisia, with a growing passion for AI engineering and intelligent systems. I build full-stack web applications and explore the design of AI agents powered by large language models. I'm constantly working on personal projects that bridge software engineering and machine intelligence, and I'm actively looking for internships, research opportunities, and collaborations both locally and internationally.",
   location: "Tunisia",
-  email: "khalil@example.com",
+  email: "medkhalilyahyaoui@gmail.com",
 }
 
 export const expertise = [
@@ -130,7 +130,7 @@ export const socialLinks = {
   instagram: "https://instagram.com/khaleel__yh",
   linkedin: "",
   twitter: "",
-  email: "khalil@example.com",
+  email: "medkhalilyahyaoui@gmail.com",
 }
 
 export const navLinks = [
