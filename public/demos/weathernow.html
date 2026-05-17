@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeatherNow · Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0c0c0c;
+      color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #262626;
+    }
+    nav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #a3a3a3;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    nav a span { color: #f59e0b; }
+    nav h1 { font-size: 1.25rem; font-weight: 700; }
+    .container {
+      flex: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem;
+    }
+    .search-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .search-row input {
+      flex: 1;
+      background: #1a1a1a;
+      border: 1px solid #262626;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: #f5f5f5;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-row input:focus { border-color: #f59e0b; }
+    .search-row button {
+      background: #f59e0b;
+      color: #0c0c0c;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .search-row button:hover { opacity: 0.85; }
+    .current {
+      background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+      border: 1px solid #262626;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    .current:hover { border-color: #f59e0b33; }
+    .current .city { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .current .temp { font-size: 4rem; font-weight: 700; color: #f59e0b; line-height: 1; margin: 0.5rem 0; }
+    .current .desc { color: #a3a3a3; font-size: 1rem; text-transform: capitalize; margin-bottom: 0.75rem; }
+    .current .details {
+      display: flex; justify-content: center; gap: 2rem; color: #a3a3a3; font-size: 0.85rem;
+    }
+    .current .details span { display: flex; align-items: center; gap: 0.35rem; }
+    .forecast { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; }
+    .forecast-card {
+      background: #1a1a1a;
+      border: 1px solid #262626;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .forecast-card:hover { border-color: #f59e0b33; }
+    .forecast-card .day { font-size: 0.75rem; color: #a3a3a3; margin-bottom: 0.25rem; }
+    .forecast-card .icon { font-size: 1.5rem; margin-bottom: 0.25rem; }
+    .forecast-card .high { font-weight: 600; font-size: 0.9rem; }
+    .forecast-card .low { font-size: 0.75rem; color: #a3a3a3; }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #a3a3a3;
+      border-top: 1px solid #262626;
+    }
+    .error { color: #ef4444; text-align: center; margin-bottom: 1rem; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>🌤️ WeatherNow</h1>
+    <a href="/"><span>//</span> back to portfolio</a>
+  </nav>
+  <div class="container">
+    <div class="search-row">
+      <input type="text" id="cityInput" placeholder="Enter a city (e.g. London, Tokyo, Sfax)" value="Sfax" autofocus>
+      <button id="searchBtn">Search</button>
+    </div>
+    <div id="error" class="error"></div>
+    <div class="current" id="currentWeather">
+      <div class="city" id="cityName">--</div>
+      <div class="temp" id="temp">--°</div>
+      <div class="desc" id="desc">--</div>
+      <div class="details">
+        <span>💧 <span id="humidity">--</span>%</span>
+        <span>💨 <span id="wind">--</span> km/h</span>
+      </div>
+    </div>
+    <div class="forecast" id="forecast"></div>
+  </div>
+  <footer>demo · khalil yahyaoui</footer>
+  <script>
+    const API_KEY = 'demo';
+    const cache = {};
+    async function fetchWeather(city) {
+      if (cache[city]) return cache[city];
+      const coords = { 'london': [51.5, -0.12], 'paris': [48.85, 2.35], 'tokyo': [35.68, 139.69], 'new york': [40.71, -74.01], 'dubai': [25.20, 55.27], 'sfax': [34.74, 10.76], 'tunis': [36.80, 10.18], 'berlin': [52.52, 13.41], 'rome': [41.90, 12.50], 'madrid': [40.42, -3.70], 'moscow': [55.76, 37.62], 'beijing': [39.90, 116.40], 'sydney': [-33.87, 151.21], 'cairo': [30.04, 31.24], 'casablanca': [33.58, -7.58], 'algiers': [36.75, 3.04], 'lagos': [6.45, 3.39], 'nairobi': [-1.29, 36.82], 'cape town': [-33.92, 18.42], 'mumbai': [19.08, 72.88], 'singapore': [1.35, 103.82], 'seoul': [37.57, 126.98], 'bangkok': [13.75, 100.50], 'istanbul': [41.01, 28.98], 'amsterdam': [52.37, 4.89] };
+      const key = city.toLowerCase().trim();
+      if (!coords[key]) throw new Error('City not found. Try: London, Tokyo, Paris, Sfax, Dubai...');
+      const [lat, lon] = coords[key];
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+      const res = await fetch(url);
+      const d = await res.json();
+      const codeToDesc = { 0:'Clear', 1:'Mainly clear', 2:'Partly cloudy', 3:'Overcast', 45:'Fog', 48:'Depositing rime fog', 51:'Light drizzle', 53:'Moderate drizzle', 55:'Dense drizzle', 61:'Slight rain', 63:'Moderate rain', 65:'Heavy rain', 71:'Slight snow', 73:'Moderate snow', 75:'Heavy snow', 80:'Slight rain showers', 81:'Moderate rain showers', 82:'Violent rain showers', 95:'Thunderstorm', 96:'Thunderstorm with slight hail', 99:'Thunderstorm with heavy hail' };
+      const codeToEmoji = { 0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',51:'🌦️',61:'🌧️',71:'❄️',80:'🌦️',95:'⛈️' };
+      const wc = d.current.weather_code;
+      const result = {
+        city: city.charAt(0).toUpperCase() + city.slice(1),
+        temp: Math.round(d.current.temperature_2m),
+        feels: Math.round(d.current.apparent_temperature),
+        desc: codeToDesc[wc] || 'Unknown',
+        icon: codeToEmoji[wc] || '🌤️',
+        humidity: d.current.relative_humidity_2m,
+        wind: Math.round(d.current.wind_speed_10m),
+        forecast: d.daily.time.map((t, i) => ({
+          day: new Date(t).toLocaleDateString('en', { weekday: 'short' }),
+          icon: codeToEmoji[d.daily.weather_code[i]] || '🌤️',
+          high: Math.round(d.daily.temperature_2m_max[i]),
+          low: Math.round(d.daily.temperature_2m_min[i]),
+        }))
+      };
+      cache[city] = result;
+      return result;
+    }
+    async function updateWeather(city) {
+      const errorEl = document.getElementById('error');
+      try {
+        errorEl.textContent = '';
+        const w = await fetchWeather(city);
+        document.getElementById('cityName').textContent = w.city;
+        document.getElementById('temp').textContent = `${w.temp}°C`;
+        document.getElementById('desc').textContent = `${w.icon} ${w.desc}`;
+        document.getElementById('humidity').textContent = w.humidity;
+        document.getElementById('wind').textContent = w.wind;
+        const forecastEl = document.getElementById('forecast');
+        forecastEl.innerHTML = w.forecast.map(f => `
+          <div class="forecast-card">
+            <div class="day">${f.day}</div>
+            <div class="icon">${f.icon}</div>
+            <div class="high">${f.high}°</div>
+            <div class="low">${f.low}°</div>
+          </div>
+        `).join('');
+      } catch (e) {
+        errorEl.textContent = e.message;
+      }
+    }
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const city = document.getElementById('cityInput').value.trim();
+      if (city) updateWeather(city);
+    });
+    document.getElementById('cityInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('searchBtn').click();
+    });
+    updateWeather('Sfax');
+  </script>
+</body>
+</html>
