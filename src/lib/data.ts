@@ -46,7 +46,7 @@ export const projects = [
     title: "LifeStats",
     description: "Personal health & wellness dashboard with animated metrics, glassmorphism UI, hydration tracking, sleep logging, workout logger, nutrition macros, and 130+ health tips. Vision Pro-inspired aesthetic.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Recharts"],
-    image: "",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop",
     link: "https://lifestats-alpha.vercel.app",
     github: "https://github.com/khalilgith/lifestats-dashboard",
     category: "web-dev",
