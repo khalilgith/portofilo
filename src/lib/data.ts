@@ -52,6 +52,15 @@ export const projects = [
     category: "web-dev",
   },
   {
+    title: "DRIP Marketplace",
+    description: "Luxury clothing marketplace with Supabase backend, Stripe payments, admin dashboard, glass-morphism editorial design, and 30+ seeded products across 5 brands.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Stripe"],
+    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=340&fit=crop",
+    link: "https://drip-virid.vercel.app",
+    github: "https://github.com/khalilgith/drip-marketplace",
+    category: "web-dev",
+  },
+  {
     title: "ChatBot",
     description: "Interactive rule-based chatbot with natural conversation flows. Built with vanilla JavaScript and a responsive dark-themed UI.",
     tech: ["HTML", "CSS", "JavaScript"],
