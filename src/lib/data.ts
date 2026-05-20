@@ -70,6 +70,15 @@ export const projects = [
     category: "web-dev",
   },
   {
+    title: "History Moments",
+    description: "Interactive timeline of world history spanning from 3000 BCE to present. Event-based browsing by century, category, and region with admin panel and search.",
+    tech: ["Next.js", "TypeScript", "Prisma", "SQLite", "NextAuth", "Framer Motion"],
+    image: "https://images.unsplash.com/photo-1447069387593-a5de0862481e?w=600&h=340&fit=crop",
+    link: "https://history-moments-eteatnx80-khalil-s-projects7.vercel.app",
+    github: "https://github.com/khalilgith/history-moments",
+    category: "web-dev",
+  },
+  {
     title: "ChatBot",
     description: "Interactive rule-based chatbot with natural conversation flows. Built with vanilla JavaScript and a responsive dark-themed UI.",
     tech: ["HTML", "CSS", "JavaScript"],
