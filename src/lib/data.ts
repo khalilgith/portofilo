@@ -61,6 +61,15 @@ export const projects = [
     category: "web-dev",
   },
   {
+    title: "NOIR Restaurant",
+    description: "Premium Michelin-star fine dining website with cinematic parallax hero, gold-accented luxury design, immersive UI/UX, online reservation system, AI concierge chat, and full admin dashboard.",
+    tech: ["Next.js 16", "TypeScript", "Tailwind CSS", "Framer Motion", "Lucide React"],
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=340&fit=crop",
+    link: "https://noir-restaurant-sepia.vercel.app",
+    github: "https://github.com/khalilgith/noir-restaurant",
+    category: "web-dev",
+  },
+  {
     title: "ChatBot",
     description: "Interactive rule-based chatbot with natural conversation flows. Built with vanilla JavaScript and a responsive dark-themed UI.",
     tech: ["HTML", "CSS", "JavaScript"],
